@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@import "tailwindcss";
+
+/* ─── Design Tokens ─── */
+:root {
+  --blue:        #1565C0;
+  --blue-dark:   #0D47A1;
+  --blue-light:  #1976D2;
+  --blue-xlight: #E3F0FF;
+  --accent:      #2196F3;
+  --gold:        #F59E0B;
+  --white:       #FFFFFF;
+  --bg:          #F8FAFF;
+  --surface:     #FFFFFF;
+  --surface2:    #EEF4FF;
+  --border:      #DDEAFF;
+  --text-primary: #0A1628;
+  --text-secondary: #3D5A80;
+  --text-muted:  #7A90A8;
+  --shadow-sm:   0 1px 4px rgba(21,101,192,.08);
+  --shadow-md:   0 4px 20px rgba(21,101,192,.12);
+  --shadow-lg:   0 12px 40px rgba(21,101,192,.18);
+  --shadow-xl:   0 24px 60px rgba(21,101,192,.22);
+}
+
+/* ─── Base ─── */
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Typography ─── */
+.font-display { font-family: 'Plus Jakarta Sans', sans-serif; }
+
+/* ─── Gradient text ─── */
+.text-gradient {
+  background: linear-gradient(135deg, #1565C0 0%, #2196F3 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Buttons ─── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  background: linear-gradient(135deg, #1565C0, #1976D2);
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: -.01em;
+  border-radius: .625rem;
+  border: none;
+  transition: all .25s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(21,101,192,.35);
+}
+.btn-primary:hover {
+  background: linear-gradient(135deg, #1976D2, #2196F3);
+  box-shadow: 0 8px 28px rgba(21,101,192,.45);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  background: transparent;
+  color: var(--blue);
+  font-weight: 700;
+  letter-spacing: -.01em;
+  border-radius: .625rem;
+  border: 2px solid var(--blue);
+  transition: all .25s ease;
+  cursor: pointer;
+}
+.btn-secondary:hover {
+  background: var(--blue-xlight);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.btn-outline-white {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  background: transparent;
+  color: #fff;
+  font-weight: 700;
+  border-radius: .625rem;
+  border: 2px solid rgba(255,255,255,.5);
+  transition: all .25s ease;
+  cursor: pointer;
+}
+.btn-outline-white:hover {
+  background: rgba(255,255,255,.12);
+  border-color: #fff;
+  transform: translateY(-2px);
+}
+
+/* ─── Cards ─── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  box-shadow: var(--shadow-sm);
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: #93BBFF;
+}
+
+/* ─── Section badge ─── */
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  padding: .35rem 1rem;
+  border-radius: 999px;
+  background: var(--blue-xlight);
+  border: 1px solid #93BBFF;
+  color: var(--blue);
+  font-size: .78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+}
+
+/* ─── Marquee ─── */
+@keyframes marquee-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee-scroll 40s linear infinite;
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+.marquee-track:hover { animation-play-state: paused; }
+.marquee-wrapper { overflow: hidden; position: relative; }
+.marquee-fade-left {
+  position: absolute; left: 0; top: 0; bottom: 0; width: 80px;
+  background: linear-gradient(to right, #fff 0%, transparent 100%);
+  z-index: 10; pointer-events: none;
+}
+.marquee-fade-right {
+  position: absolute; right: 0; top: 0; bottom: 0; width: 80px;
+  background: linear-gradient(to left, #fff 0%, transparent 100%);
+  z-index: 10; pointer-events: none;
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #EEF4FF; }
+::-webkit-scrollbar-thumb { background: #93BBFF; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #1565C0; }
+
+/* ─── Focus ─── */
+*:focus-visible { outline: 2px solid #1565C0; outline-offset: 3px; }
+
+/* ─── Laptop 3-D Flip ─── */
+.laptop-scene {
+  perspective: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.laptop-rig {
+  transform-style: preserve-3d;
+  position: relative;
+  width: 420px;
+  max-width: 100%;
+}
+
+/* ─── Utility ─── */
+.divider { height: 1px; background: var(--border); }
